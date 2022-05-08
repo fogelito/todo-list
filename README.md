@@ -12,7 +12,7 @@ $ git clone https://github.com/fogelito/todo-list
 ```
 3. Go inside the folder by command
 ```sh
-$ cd playground-for-web
+$ cd todo-list
 ```
 4. Run the command to install node modules
 ```sh

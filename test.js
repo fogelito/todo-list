@@ -1,19 +1,59 @@
 const sdk = require('node-appwrite');
 
-const client = new sdk.Client();
+let client = new sdk.Client();
+
+const endPoint = 'http://127.0.0.1:9501/v1';
+const projectId = '6270fa31ea6924bb7676';
+const apiKey = 'xxxs';
 
 client
-    .setEndpoint('http://localhost/v1') // Your API Endpoint
-    .setProject('62387717329626ff1d5a') // Your project ID
-    .setKey('000615ffba60ade50ebabc4f13360f4b78a87b40d6f64e2d3eb3d7b248ed70495f8e6918327c12338d96e1f5a745360db915b7ec71e4e0694cf3c3bc4f9a33a78a183d651f64e75ba1f2f3b920a7fec5b04cb706ddbe962d6922a9631e855198e9d042c8205efcc45a19640e0f55b543570da692fe5bea94381632f161b10913') // Your secret API key
+    .setEndpoint(endPoint)
+    .setProject(projectId)
+    .setKey(apiKey)
+// .setJWT('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ...') // Your secret JSON Web Token
 ;
 
+
+let account = new sdk.Account(client);
 let users = new sdk.Users(client);
 
-let promise = users.get('623b66a849afa34b5d4e');
+let promise3 = account.createJWT();
 
-promise.then(function (response) {
-    console.log(response);
+promise3.then(function (response) {
+    console.log(response); // Success
 }, function (error) {
-    console.log(error);
+    console.log(error); // Failure
 });
+
+
+
+//
+//
+// users.get('623b66a849afa34b5d4e').then(function (response) {
+//     console.log(response);
+// }, function (error) {
+//     console.log(error);
+// });
+//
+//
+// account.get().then(function (response) {
+//     console.log(response);
+// }, function (error) {
+//     console.log(error);
+// });
+//
+//
+//
+//
+// sdk
+//     .setEndpoint('https://[HOSTNAME_OR_IP]/v1') // Your API Endpoint
+//     .setProject('5df5acd0d48c2') // Your project ID
+// ;
+//
+// let promise = sdk.account.create('[USER_ID]', 'email@example.com', 'password');
+//
+// promise.then(function (response) {
+//     console.log(response); // Success
+// }, function (error) {
+//     console.log(error); // Failure
+// });
